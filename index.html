@@ -299,23 +299,16 @@
 
     .guess-row {
       display: grid;
-      grid-template-columns: 1fr auto auto auto 1fr;
+      grid-template-columns: 1fr auto 1fr auto;
       gap: 8px;
       align-items: center;
     }
-
-    .eq-symbol {
-      font-size: 26px;
-      font-weight: 950;
-      text-align: center;
+    
+    .guess-word {
+      font-size: 18px;
+      font-weight: 900;
       color: #24324a;
-      min-width: 18px;
-    }
-
-    .eq-symbol.math-var {
-      font-size: 32px;
-      font-weight: 500;
-      color: #111;
+      white-space: nowrap;
     }
 
     select,
@@ -506,11 +499,10 @@
         <h2 class="guess-title">この箱のルールを予想しよう</h2>
 
         <div class="guess-row">
-          <select id="guessA" aria-label="a"></select>
-          <div class="eq-symbol">×</div>
-          <div class="eq-symbol math-var">x</div>
-          <div class="eq-symbol">＋</div>
-          <select id="guessB" aria-label="b"></select>
+          <select id="guessA" aria-label="何倍"></select>
+          <div class="guess-word">倍して</div>
+          <select id="guessB" aria-label="いくつたす"></select>
+          <div class="guess-word">をたす</div>
         </div>
 
         <div id="guessPreview" class="guess-preview"></div>
@@ -623,7 +615,7 @@
     function updateGuessPreview() {
       const a = Number(guessA.value);
       const b = Number(guessB.value);
-      guessPreview.innerHTML = formatExpressionHtml(a, b, true);
+      guessPreview.textContent = `${a}倍して ${b}をたす`;
     }
 
     function pickNewRule() {
