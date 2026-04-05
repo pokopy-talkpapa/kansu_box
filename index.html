@@ -615,7 +615,7 @@
     function updateGuessPreview() {
       const a = Number(guessA.value);
       const b = Number(guessB.value);
-      guessPreview.textContent = `${a}倍して ${b}をたす`;
+      guessPreview.innerHTML = formatExpressionHtml(a, b, true);
     }
 
     function pickNewRule() {
